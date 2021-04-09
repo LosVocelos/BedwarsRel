@@ -109,7 +109,11 @@ public class BedwarsRelPlaceholders extends PlaceholderExpansion {
             return "";
         }
 
-        if (identifier.startsWith("regionname")) {
+        if (identifier.startsWith("gamename")) {
+            Game game = getGameFromPlaceholder(identifier, 2);
+            return game != null ? game.getName() : null;
+
+        } else if (identifier.startsWith("regionname")) {
             Game game = getGameFromPlaceholder(identifier, 2);
             return game != null ? game.getRegionName() : null;
 
