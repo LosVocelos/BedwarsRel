@@ -784,6 +784,9 @@ public class BedwarsRel extends JavaPlugin {
       }
       this.holographicInteraction.loadHolograms();
     }
+    if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+      new BedwarsRelPlaceholders(this).register();
+    }
   }
 
   private void registerBugsnag() {
