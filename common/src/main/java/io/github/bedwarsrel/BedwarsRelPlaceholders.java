@@ -2,6 +2,7 @@ package io.github.bedwarsrel;
 
 import io.github.bedwarsrel.game.Game;
 import io.github.bedwarsrel.game.GameState;
+import io.github.bedwarsrel.statistics.PlayerStatistic;
 import org.bukkit.*;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.*;
@@ -144,6 +145,42 @@ public class BedwarsRelPlaceholders extends PlaceholderExpansion {
         } else if (identifier.equals("allgames")) {
             ArrayList<Game> games = plugin.getGameManager().getGames();
             return String.valueOf(games.size());
+        }
+        //##########################
+        else if (identifier.equals("player_score")) {
+            PlayerStatistic statistic = BedwarsRel.getInstance()
+                    .getPlayerStatisticManager().getStatistic(player);
+            return String.valueOf(statistic.getScore() + statistic.getCurrentScore());
+
+        } else if (identifier.equals("player_wins")) {
+            PlayerStatistic statistic = BedwarsRel.getInstance()
+                    .getPlayerStatisticManager().getStatistic(player);
+            return String.valueOf(statistic.getWins() + statistic.getCurrentWins());
+
+        } else if (identifier.equals("player_loses")) {
+            PlayerStatistic statistic = BedwarsRel.getInstance()
+                    .getPlayerStatisticManager().getStatistic(player);
+            return String.valueOf(statistic.getLoses() + statistic.getCurrentLoses());
+
+        } else if (identifier.equals("player_kills")) {
+            PlayerStatistic statistic = BedwarsRel.getInstance()
+                    .getPlayerStatisticManager().getStatistic(player);
+            return String.valueOf(statistic.getKills() + statistic.getCurrentKills());
+
+        } else if (identifier.equals("player_deaths")) {
+            PlayerStatistic statistic = BedwarsRel.getInstance()
+                    .getPlayerStatisticManager().getStatistic(player);
+            return String.valueOf(statistic.getDeaths() + statistic.getCurrentDeaths());
+
+        } else if (identifier.equals("player_destroyedbeds")) {
+            PlayerStatistic statistic = BedwarsRel.getInstance()
+                    .getPlayerStatisticManager().getStatistic(player);
+            return String.valueOf(statistic.getDestroyedBeds() + statistic.getCurrentDestroyedBeds());
+
+        } else if (identifier.equals("player_games")) {
+            PlayerStatistic statistic = BedwarsRel.getInstance()
+                    .getPlayerStatisticManager().getStatistic(player);
+            return String.valueOf(statistic.getGames() + statistic.getCurrentGames());
         }
 
         return null;
